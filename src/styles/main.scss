@@ -2,7 +2,7 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
-  background-color: darksalmon;
+  background-color: #EFEFEF;
   text-align: center;
 
   h1 {
@@ -10,4 +10,28 @@ body {
     font-family: fantasy;
   }
 
+  .fa-pinterest {
+    color: #BD081C;
+  }
+
+  .fa-sign-in-alt {
+    margin-right: 5px;
+  }
+
+  .fa-sign-out-alt {
+    margin-right: 5px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .btn-link {
+    color: darkgray;
+  }
+
+  .btn-link:hover {
+    color: #000000;
+    text-decoration: none;
+  }
 }
