@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import boardData from '../../helpers/data/boardData';
 import utils from '../../helpers/utils';
+import boardClicks from '../displayPins/displayPins';
 
 const displayBoards = () => {
   const getUserName = firebase.auth().currentUser.displayName;
@@ -15,11 +16,12 @@ const displayBoards = () => {
       boards.forEach((board) => {
         domString += `
           <div class="boardButton">
-          <button class="btn btn-danger boardbtn">${board.title}</button>
+          <button type="button" id="${board.title}" class="btn btn-danger boardbtn">${board.title}</button>
           </div>`;
       });
       domString += '</div>';
       utils.printToDom('#boards', domString);
+      boardClicks.boardClicks();
     })
     .catch((err) => console.error('bork', err));
 };
