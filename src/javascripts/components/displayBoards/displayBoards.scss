@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+
+.boardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.boardButton {
+  margin-right: 5px;
+}
+
+.boardbtn {
+  background-color: #BD081C !important;
+}
+
+.boardbtn:hover {
+  opacity: .9;
+}
+
+.welcome {
+  color: #BD081C;
+  font-family: 'Pattaya', sans-serif;
+}
+
+.userHeader {
+  margin: 20px 0px 10px 0px;
+}
