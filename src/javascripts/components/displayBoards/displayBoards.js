@@ -16,7 +16,7 @@ const displayBoards = () => {
       boards.forEach((board) => {
         domString += `
           <div class="boardButton">
-          <button type="button" id="${board.title}" class="btn btn-danger boardbtn">${board.title}</button>
+          <button type="button" id="${board.id}" class="btn btn-danger boardbtn">${board.title}</button>
           </div>`;
       });
       domString += '</div>';
