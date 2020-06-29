@@ -3,7 +3,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import boardData from '../../helpers/data/boardData';
 import utils from '../../helpers/utils';
-import boardClicks from '../displayPins/displayPins';
 
 const displayBoards = () => {
   const getUserName = firebase.auth().currentUser.displayName;
@@ -21,7 +20,6 @@ const displayBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('#boards', domString);
-      boardClicks.boardClicks();
     })
     .catch((err) => console.error('bork', err));
 };

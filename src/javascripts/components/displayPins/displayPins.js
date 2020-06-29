@@ -18,14 +18,13 @@ const displayPins = (e) => {
       pins.forEach((pin) => {
         if (pin.boardId === selectedBoard) {
           domString += `
-          <div class="card" style="width: 18rem;">
-          <img src="${pin.imgUrl}" class="card-img-top" alt="...">
-          <h5 class="card-title">${pin.title}</h5>
-          <div class="card-body">
-          <p class="card-text">${pin.description}</p>
-          </div>
-          </div>
-          `;
+            <div class="card" style="width: 18rem;">
+            <img src="${pin.imgUrl}" class="card-img-top" alt="...">
+            <h5 class="card-title">${pin.title}</h5>
+            <div class="card-body">
+            <p class="card-text">${pin.description}</p>
+            </div>
+            </div>`;
         }
       });
       domString += '</div>';
@@ -34,8 +33,4 @@ const displayPins = (e) => {
     .catch((err) => console.error('bork', err));
 };
 
-const boardClicks = () => {
-  $('.boardbtn').click(displayPins);
-};
-
-export default { boardClicks };
+export default { displayPins };
