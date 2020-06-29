@@ -5,6 +5,7 @@ import boards from '../../components/displayBoards/displayBoards';
 const loginButton = $('#loginButton');
 const logoutButton = $('#logoutButton');
 const boardsDiv = $('#boards');
+const pinsDiv = $('#pins');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -12,11 +13,13 @@ const checkLoginStatus = () => {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
       boardsDiv.removeClass('hide');
+      pinsDiv.removeClass('hide');
       boards.displayBoards();
     } else {
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
       boardsDiv.addClass('hide');
+      pinsDiv.addClass('hide');
     }
   });
 };
