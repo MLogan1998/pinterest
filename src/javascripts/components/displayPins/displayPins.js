@@ -19,20 +19,20 @@ const displayPins = (e) => {
       pins.forEach((pin) => {
         if (pin.boardId === selectedBoard) {
           domString += `
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;" id="${pin.id}">
             <img src="${pin.imgUrl}" class="card-img-top" alt="...">
             <h5 class="card-title">${pin.title}</h5>
             <div class="card-body">
-            <button class="btn btn-danger moreInfo" type="button" data-toggle="collapse" data-target="#${pin.id}" aria-expanded="false" aria-controls="${pin.id}">More Info</button>
+            <button class="btn btn-danger moreInfo" type="button" data-toggle="collapse" data-target="#${pin.id}1" aria-expanded="false" aria-controls="${pin.id}1">More Info</button>
             </p>
-            <div class="collapse" id="${pin.id}">
+            <div class="collapse" id="${pin.id}1">
             <div class="card card-body">
             <p class=pInfo>${pin.description}</p>
             </div>`;
           if (currentUser === pin.userId) {
             domString += `
             <div>
-            <i class="fas fa-trash-alt fa-lg"></i>
+            <i id="${pin.boardId}" class="fas fa-trash-alt fa-lg"></i>
             </div>`;
           }
           domString += `
