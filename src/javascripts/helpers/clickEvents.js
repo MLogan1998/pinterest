@@ -14,9 +14,19 @@ const homeClick = () => {
   $('#boards').removeClass('hide');
 };
 
+const infoClick = (e) => {
+  const btn = e.target;
+  if (btn.innerHTML === 'More Info') {
+    btn.innerHTML = 'Show Less';
+  } else {
+    btn.innerHTML = 'More Info';
+  }
+};
+
 const clickEvents = () => {
   $('body').on('click', '.boardbtn', boardClick);
   $('body').on('click', '.fa-home', homeClick);
+  $('body').on('click', '.moreInfo', infoClick);
 };
 
 export default { clickEvents };

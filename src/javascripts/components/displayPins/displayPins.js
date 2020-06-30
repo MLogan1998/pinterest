@@ -23,9 +23,7 @@ const displayPins = (e) => {
             <img src="${pin.imgUrl}" class="card-img-top" alt="...">
             <h5 class="card-title">${pin.title}</h5>
             <div class="card-body">
-            <button class="btn btn-danger moreInfo" type="button" data-toggle="collapse" data-target="#${pin.id}" aria-expanded="false" aria-controls="${pin.id}">
-            More Info
-            </button>
+            <button class="btn btn-danger moreInfo" type="button" data-toggle="collapse" data-target="#${pin.id}" aria-expanded="false" aria-controls="${pin.id}">More Info</button>
             </p>
             <div class="collapse" id="${pin.id}">
             <div class="card card-body">
