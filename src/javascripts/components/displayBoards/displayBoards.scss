@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Khula&display=swap');
 
 .boardContainer {
   display: flex;
@@ -25,4 +26,18 @@
 
 .userHeader {
   margin: 20px 0px 10px 0px;
+}
+
+.fa-trash {
+  color: #BD081C;
+  cursor: pointer;
+};
+
+.boardName {
+  font-family: 'Khula', sans-serif;
+  font-weight: bold;
+}
+
+h2, h5 {
+  font-family: 'Khula', sans-serif;
 }

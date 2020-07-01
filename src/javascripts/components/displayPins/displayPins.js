@@ -19,10 +19,10 @@ const displayPins = (e) => {
       pins.forEach((pin) => {
         if (pin.boardId === selectedBoard) {
           domString += `
-            <div class="card" style="width: 18rem;" id="${pin.id}">
+            <div class="card pinCard" style="width: 18rem;" id="${pin.id}">
             <img src="${pin.imgUrl}" class="card-img-top" alt="...">
             <h5 class="card-title">${pin.title}</h5>
-            <div class="card-body">
+            <div class="card-body pinBody">
             <button class="btn btn-danger moreInfo" type="button" data-toggle="collapse" data-target="#${pin.id}1" aria-expanded="false" aria-controls="${pin.id}1">More Info</button>
             </p>
             <div class="collapse" id="${pin.id}1">
