@@ -1,7 +1,8 @@
 import pins from '../components/displayPins/displayPins';
 import deletePin from '../components/deletePin';
-// import boards from '../components/displayBoards/displayBoards';
+import deleteBoard from '../components/deleteBoard';
 import utils from './utils';
+import displayBoards from '../components/displayBoards/displayBoards';
 
 const boardClick = (e) => {
   pins.displayPins(e);
@@ -24,15 +25,24 @@ const infoClick = (e) => {
   }
 };
 
-const deleteClick = (e) => {
+const deletePinClick = (e) => {
   deletePin.deletePinEvent(e);
+};
+
+const deleteBoardClick = (e) => {
+  deleteBoard.deleteBoard(e)
+    .then(() => {
+      displayBoards.displayBoards();
+    })
+    .catch((err) => err);
 };
 
 const clickEvents = () => {
   $('body').on('click', '.boardbtn', boardClick);
   $('body').on('click', '.fa-home', homeClick);
   $('body').on('click', '.moreInfo', infoClick);
-  $('body').on('click', '.fa-trash-alt', deleteClick);
+  $('body').on('click', '.fa-trash-alt', deletePinClick);
+  $('body').on('click', '.fa-trash', deleteBoardClick);
 };
 
 export default { clickEvents };
