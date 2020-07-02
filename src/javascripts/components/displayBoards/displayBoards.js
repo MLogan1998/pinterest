@@ -29,6 +29,7 @@ const displayBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('#boards', domString);
+      console.error(boards);
     })
     .catch((err) => console.error('bork', err));
 };
