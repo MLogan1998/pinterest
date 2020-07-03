@@ -26,10 +26,12 @@ const pinByBoardId = (boardId) => new Promise((resolve, reject) => {
     .then((response) => {
       const pinObj = response.data;
       const pins = [];
-      Object.keys(pinObj).forEach((pinId) => {
-        pinObj[pinId].id = pinId;
-        pins.push(pinObj[pinId]);
-      });
+      if (pinObj) {
+        Object.keys(pinObj).forEach((pinId) => {
+          pinObj[pinId].id = pinId;
+          pins.push(pinObj[pinId]);
+        });
+      }
       resolve(pins);
     })
     .catch((err) => reject(err));
