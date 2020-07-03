@@ -19,6 +19,7 @@ const displayPins = (e) => {
       pins.forEach((pin) => {
         if (pin.boardId === selectedBoard) {
           domString += `
+            <h3>
             <div class="card pinCard" style="width: 18rem;" id="${pin.id}">
             <img src="${pin.imgUrl}" class="card-img-top" alt="...">
             <h5 class="card-title">${pin.title}

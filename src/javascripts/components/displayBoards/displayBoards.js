@@ -4,32 +4,49 @@ import 'firebase/auth';
 import boardData from '../../helpers/data/boardData';
 import utils from '../../helpers/utils';
 
+const noBoardData = () => {
+  const getUserName = firebase.auth().currentUser.displayName;
+  const domString = `
+        <div class="headContainer">
+        <h2 class=userHeader><span class="welcome">Welcome,</span> ${getUserName}!</h2>
+        <h5>Nothing to see here. Add a board.</h5>
+        </div>`;
+  utils.printToDom('#boards', domString);
+};
+
 const displayBoards = () => {
+  const currentUser = firebase.auth().currentUser.uid;
   const getUserName = firebase.auth().currentUser.displayName;
   boardData.getBoards()
     .then((boards) => {
-      let domString = `
+      if (Array.isArray(boards) && boards.length > 0) {
+        let domString = `
         <div class="headContainer">
         <h2 class=userHeader><span class="welcome">Welcome,</span> ${getUserName}!</h2>
         <h5>Browse Boards</h5>
         </div>
         <div class="boardContainer">
       `;
-      boards.forEach((board) => {
-        domString += `
+        boards.forEach((board) => {
+          domString += `
           <div class="card mr-2">
           <h5 class="card-header boardName">${board.title}</h5>
           <div class="card-body">
           <div class="boardButton">
-          <button type="button" id="${board.id}" class="btn btn-danger boardbtn mr-3">Show Pins</button>
-          <i class="fas fa-trash"></i>
+          <button type="button" id="${board.id}" class="btn btn-danger boardbtn mr-3">Show Pins</button>`;
+          if (currentUser === board.uid) {
+            domString += '<i class="fas fa-trash"></i>';
+          }
+          domString += `
           </div>
           </div>
           </div>`;
-      });
-      domString += '</div>';
-      utils.printToDom('#boards', domString);
-      console.error(boards);
+        });
+        domString += '</div>';
+        utils.printToDom('#boards', domString);
+      } else {
+        noBoardData();
+      }
     })
     .catch((err) => console.error('bork', err));
 };
