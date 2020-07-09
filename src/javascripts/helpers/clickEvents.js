@@ -4,6 +4,7 @@ import deleteBoard from '../components/deleteBoard';
 import utils from './utils';
 import displayBoards from '../components/displayBoards/displayBoards';
 import boardModal from '../components/addBoard/addBoard';
+import pinForm from '../components/addPin/addPin';
 
 const boardClick = (e) => {
   pins.displayPins(e);
@@ -46,6 +47,10 @@ const addBoardClick = () => {
   boardModal.createNewBoard();
 };
 
+const newPinClick = (e) => {
+  pinForm.pinForm(e);
+};
+
 const clickEvents = () => {
   $('body').on('click', '.boardbtn', boardClick);
   $('body').on('click', '.fa-home', homeClick);
@@ -54,6 +59,7 @@ const clickEvents = () => {
   $('body').on('click', '.fa-trash', deleteBoardClick);
   $('body').on('click', '.newBoardBtn', newBoardClick);
   $('body').on('click', '.add-brd-btn', addBoardClick);
+  $('body').on('click', '.new-pin', newPinClick);
 };
 
 export default { clickEvents };
