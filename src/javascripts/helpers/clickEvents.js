@@ -49,6 +49,7 @@ const addBoardClick = () => {
 
 const newPinClick = (e) => {
   pinForm.pinForm(e);
+  utils.clearDom('#pinButton');
 };
 
 const clickEvents = () => {
