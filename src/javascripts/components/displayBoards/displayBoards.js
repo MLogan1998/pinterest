@@ -15,6 +15,7 @@ const noBoardData = () => {
 };
 
 const displayBoards = () => {
+  const admin = 'ghzu6oLncNReiCyFVjZVfBjIdbs1';
   const currentUser = firebase.auth().currentUser.uid;
   const getUserName = firebase.auth().currentUser.displayName;
   boardData.getBoards()
@@ -29,12 +30,12 @@ const displayBoards = () => {
       `;
         boards.forEach((board) => {
           domString += `
-          <div class="card mr-2">
+          <div class="card m-1">
           <h5 class="card-header boardName">${board.title}</h5>
           <div class="card-body">
           <div class="boardButton">
           <button type="button" id="${board.id}" class="btn btn-danger boardbtn mr-3">Show Pins</button>`;
-          if (currentUser === board.uid) {
+          if (currentUser === board.uid || currentUser === admin) {
             domString += '<i class="fas fa-trash"></i>';
           }
           domString += `
@@ -42,7 +43,16 @@ const displayBoards = () => {
           </div>
           </div>`;
         });
-        domString += '</div>';
+        domString += `
+          <div class="card m-1">
+          <h5 class="card-header boardName">New Board</h5>
+          <div class="card-body">
+          <div class="boardButton">
+          <i class="far fa-plus-square fa-2x newBoardBtn" data-toggle="modal" data-target="#addBoardModal"></i>
+          </div>
+          </div>
+          </div>
+        </div>`;
         utils.printToDom('#boards', domString);
       } else {
         noBoardData();
