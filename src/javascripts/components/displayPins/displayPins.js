@@ -4,19 +4,21 @@ import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 import './displayPins.scss';
 
-const noPinData = () => {
+const noPinData = (board) => {
   const domString = `
     <div class ="home">
     <i class="fas fa-home fa-2x"></i>
     <h5 class="mt-2">Nothing to see here. Add a pin.</h5>
+    <div id="pinButton">
+    <button class="btn btn-danger mt-2 new-pin" data-board="${board}"><i class="fas fa-plus mr-1"></i>Create New Pin</button>
+    </div>
+    <div id="pinForm"></div>
     </div>
   `;
   utils.printToDom('#pins', domString);
 };
 
-const displayPins = (e) => {
-  e.preventDefault();
-  const selectedBoard = e.target.id;
+const displayPins = (selectedBoard) => {
   const currentUser = firebase.auth().currentUser.uid;
   let domString = '';
   pinData.pinByBoardId(selectedBoard)
@@ -25,6 +27,10 @@ const displayPins = (e) => {
         domString += `
         <div class ="home">
         <i class="fas fa-home fa-2x"></i>
+        <div id="pinButton">
+        <button class="btn btn-danger mt-2 new-pin" data-board="${selectedBoard}"><i class="fas fa-plus mr-1"></i>Create New Pin</button>
+        </div>
+        <div id="pinForm"></div>
         </div>
         <div class="pinContainer">`;
         pins.forEach((pin) => {
@@ -52,10 +58,15 @@ const displayPins = (e) => {
         domString += '</div>';
         utils.printToDom('#pins', domString);
       } else {
-        noPinData();
+        noPinData(selectedBoard);
       }
     })
     .catch((err) => console.error('bork', err));
 };
 
-export default { displayPins };
+const displayPinsEvent = (e) => {
+  const selectedBoard = e.target.id;
+  displayPins(selectedBoard);
+};
+
+export default { displayPins, displayPinsEvent };
