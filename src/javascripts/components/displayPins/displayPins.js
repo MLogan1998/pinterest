@@ -43,7 +43,8 @@ const displayPins = (selectedBoard) => {
             `;
           if (currentUser === pin.userId) {
             domString += `
-                <i id="${pin.boardId}" class="fas fa-trash-alt ml-3"></i>`;
+              <i class="fas fa-arrow-circle-right ml-3 movePin" data-toggle="modal" data-target="#movePinModal" data-board="${pin.boardId}"></i>
+              <i id="${pin.boardId}" class="fas fa-trash-alt ml-3"></i>`;
           }
           domString += `
             </p>

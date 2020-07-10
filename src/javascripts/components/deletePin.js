@@ -6,7 +6,7 @@ const deletePinEvent = (e) => {
   const pinId = e.target.closest('.card').id;
   pinData.deletePin(pinId)
     .then(() => {
-      displayPins.displayPins(e);
+      displayPins.displayPins(e.target.id);
     })
     .catch((err) => console.error('could not delete mushroom', err));
 };

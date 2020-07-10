@@ -5,6 +5,7 @@ import utils from './utils';
 import displayBoards from '../components/displayBoards/displayBoards';
 import boardModal from '../components/addBoard/addBoard';
 import pinForm from '../components/addPin/addPin';
+import pinModal from '../components/movePin/movePin';
 
 const boardClick = (e) => {
   pins.displayPinsEvent(e);
@@ -52,6 +53,14 @@ const newPinClick = (e) => {
   utils.clearDom('#pinButton');
 };
 
+const movePinClick = () => {
+  pinModal.movePinModal();
+};
+
+const movePin = () => {
+  pinModal.movePin();
+};
+
 const clickEvents = () => {
   $('body').on('click', '.boardbtn', boardClick);
   $('body').on('click', '.fa-home', homeClick);
@@ -60,6 +69,8 @@ const clickEvents = () => {
   $('body').on('click', '.fa-trash', deleteBoardClick);
   $('body').on('click', '.newBoardBtn', newBoardClick);
   $('body').on('click', '.add-brd-btn', addBoardClick);
+  $('body').on('click', '.movePin', movePinClick);
+  $('body').on('click', '.selectTheBoard', movePin);
   $('body').on('click', '.new-pin', newPinClick);
 };
 
