@@ -14,10 +14,9 @@ const addPin = (e) => {
     boardId: e.target.childNodes[7].children[0].dataset.boardid,
   };
   pinData.addNewPin(newPinObj)
-    .then(() => displayPins.displayPins())
+    .then(() => displayPins.displayPins(newPinObj.boardId))
     .catch((err) => err);
   utils.clearDom('#pinForm');
-  console.error(newPinObj);
 };
 
 const pinForm = (e) => {

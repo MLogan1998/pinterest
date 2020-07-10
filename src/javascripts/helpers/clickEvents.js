@@ -7,7 +7,7 @@ import boardModal from '../components/addBoard/addBoard';
 import pinForm from '../components/addPin/addPin';
 
 const boardClick = (e) => {
-  pins.displayPins(e);
+  pins.displayPinsEvent(e);
   $('#pins').removeClass('hide');
   $('#boards').addClass('hide');
 };

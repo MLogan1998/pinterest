@@ -4,8 +4,7 @@ import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 import './displayPins.scss';
 
-const noPinData = (e) => {
-  const board = e.target.id;
+const noPinData = (board) => {
   const domString = `
     <div class ="home">
     <i class="fas fa-home fa-2x"></i>
@@ -19,9 +18,7 @@ const noPinData = (e) => {
   utils.printToDom('#pins', domString);
 };
 
-const displayPins = (e) => {
-  e.preventDefault();
-  const selectedBoard = e.target.id;
+const displayPins = (selectedBoard) => {
   const currentUser = firebase.auth().currentUser.uid;
   let domString = '';
   pinData.pinByBoardId(selectedBoard)
@@ -61,10 +58,15 @@ const displayPins = (e) => {
         domString += '</div>';
         utils.printToDom('#pins', domString);
       } else {
-        noPinData(e);
+        noPinData(selectedBoard);
       }
     })
     .catch((err) => console.error('bork', err));
 };
 
-export default { displayPins };
+const displayPinsEvent = (e) => {
+  const selectedBoard = e.target.id;
+  displayPins(selectedBoard);
+};
+
+export default { displayPins, displayPinsEvent };
