@@ -5,6 +5,7 @@ import utils from './utils';
 import displayBoards from '../components/displayBoards/displayBoards';
 import boardModal from '../components/addBoard/addBoard';
 import pinForm from '../components/addPin/addPin';
+import pinModal from '../components/movePin/movePin';
 
 const boardClick = (e) => {
   pins.displayPinsEvent(e);
@@ -52,6 +53,25 @@ const newPinClick = (e) => {
   utils.clearDom('#pinButton');
 };
 
+const movePinClick = (e) => {
+  $('.card-footer').removeClass('hide');
+  $('.moreInfo').addClass('hide');
+  $('.movePin').addClass('hide');
+  $('.fa-trash-alt').addClass('hide');
+  pinModal.movePinModal(e);
+};
+
+const movePin = (e) => {
+  pinModal.movePin2(e);
+};
+
+const closeSelect = () => {
+  $('.card-footer').addClass('hide');
+  $('.moreInfo').removeClass('hide');
+  $('.movePin').removeClass('hide');
+  $('.fa-trash-alt').removeClass('hide');
+};
+
 const clickEvents = () => {
   $('body').on('click', '.boardbtn', boardClick);
   $('body').on('click', '.fa-home', homeClick);
@@ -60,7 +80,10 @@ const clickEvents = () => {
   $('body').on('click', '.fa-trash', deleteBoardClick);
   $('body').on('click', '.newBoardBtn', newBoardClick);
   $('body').on('click', '.add-brd-btn', addBoardClick);
+  $('body').on('click', '.movePin', movePinClick);
+  $('body').on('click', '.selectTheBoard', movePin);
   $('body').on('click', '.new-pin', newPinClick);
+  $('body').on('click', '.fa-window-close', closeSelect);
 };
 
 export default { clickEvents };

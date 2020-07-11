@@ -22,6 +22,9 @@
   border: 0px solid #EFEFEF !important;
 }
 
+.card-footer{
+  border: 0px solid white !important;
+}
 .card-title {
   color: #BD081C;
   margin-top: 9px !important;
@@ -43,7 +46,7 @@
   text-align: justify;
 }
 
-.fa-trash-alt {
+.fa-trash-alt, .fa-arrow-circle-right {
   color: #BD081C;
   cursor: pointer;
   font-size: 15px;

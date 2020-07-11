@@ -36,14 +36,16 @@ const displayPins = (selectedBoard) => {
         pins.forEach((pin) => {
           domString += `
             <div class="card pinCard" style="width: 18rem;" id="${pin.id}">
-            <img src="${pin.imgUrl}" class="card-img-top" alt="...">
+            <img src="${pin.imgUrl}" class="card-img-top" alt="${pin.title}">
             <h5 class="card-title">${pin.title}</h5>
+            <div class="card-footer bg-transparent hide" id="${pin.id}dropDown"></div>
             <div class="card-body pinBody">
             <button class="btn btn-danger moreInfo" type="button" data-toggle="collapse" data-target="#${pin.id}1" aria-expanded="false" aria-controls="${pin.id}1">More Info</button>
             `;
           if (currentUser === pin.userId) {
             domString += `
-                <i id="${pin.boardId}" class="fas fa-trash-alt ml-3"></i>`;
+              <i class="fas fa-arrow-circle-right ml-3 movePin" data-board="${pin.boardId}"></i>
+              <i id="${pin.boardId}" class="fas fa-trash-alt ml-3"></i>`;
           }
           domString += `
             </p>
