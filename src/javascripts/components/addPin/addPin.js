@@ -24,6 +24,9 @@ const pinForm = (e) => {
   const boardid = e.target.dataset.board;
   const domString = `
   <div class="formContainer">
+  <div class="closeForm">
+  <i class="fas fa-window-close closeForm mb-1"></i>
+  </div>
   <form id="pinSubmit">
   <div class="form-group mb-1">
     <label for="pinTitle" class="mb-0 mt-2">Pin Title:</label>

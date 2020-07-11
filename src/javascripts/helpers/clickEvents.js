@@ -50,11 +50,10 @@ const addBoardClick = () => {
 
 const newPinClick = (e) => {
   pinForm.pinForm(e);
-  utils.clearDom('#pinButton');
+  $('.new-pin').addClass('hide');
 };
 
 const movePinClick = (e) => {
-  $('.card-footer').removeClass('hide');
   $('.moreInfo').addClass('hide');
   $('.movePin').addClass('hide');
   $('.fa-trash-alt').addClass('hide');
@@ -66,10 +65,15 @@ const movePin = (e) => {
 };
 
 const closeSelect = () => {
-  $('.card-footer').addClass('hide');
+  utils.clearDom('.card-footer');
   $('.moreInfo').removeClass('hide');
   $('.movePin').removeClass('hide');
   $('.fa-trash-alt').removeClass('hide');
+};
+
+const closeForm = () => {
+  utils.clearDom('#pinForm');
+  $('.new-pin').removeClass('hide');
 };
 
 const clickEvents = () => {
@@ -83,7 +87,8 @@ const clickEvents = () => {
   $('body').on('click', '.movePin', movePinClick);
   $('body').on('click', '.selectTheBoard', movePin);
   $('body').on('click', '.new-pin', newPinClick);
-  $('body').on('click', '.fa-window-close', closeSelect);
+  $('body').on('click', '.closeDropdown', closeSelect);
+  $('body').on('click', '.closeForm', closeForm);
 };
 
 export default { clickEvents };
