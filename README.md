@@ -17,12 +17,8 @@ The objective of the exercise was to create a site similar to Pinterest. This pr
 ![Board View](screenshots/screenshot2.jpg)
 ##### Pin View / Inside Board
 ![Pin View](screenshots/screenshot3.jpg)
-##### Create New Board
-![Create New Board](screenshots/newboard.gif)
-##### Create New Pin
-![Create New Pin](screenshots/newpin1.gif)
-##### Move Pin
-![Move Pin](screenshots/movepin.gif)
+##### CRUD Features
+![Features](screenshots/features6.gif)
 
 
 
