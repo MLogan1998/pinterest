@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula&display=swap');
+
+.welcomeContainer {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.message {
+  font-family: 'Khula', sans-serif;
+  margin: 0 auto;
+  width: 40%;
+  text-align: justify;
+}
+
+.message a {
+  color: #BD081C !important;
+  text-decoration: none !important;
+}
+
+.messageLink {
+  color: #BD081C;
+}
+
+@media only screen and (max-width: 500px) {
+  .message {width:95%;}
+}
