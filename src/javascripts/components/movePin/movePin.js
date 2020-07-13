@@ -1,6 +1,3 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-
 import './movePin.scss';
 import utils from '../../helpers/utils';
 import boardData from '../../helpers/data/boardData';
@@ -8,9 +5,8 @@ import pinData from '../../helpers/data/pinData';
 import displayPins from '../displayPins/displayPins';
 
 const movePinModal = (e) => {
-  const currentUser = firebase.auth().currentUser.uid;
-  const admin = 'ghzu6oLncNReiCyFVjZVfBjIdbs1';
   const pinId = e.target.closest('.card').id;
+  const boardId = $('.new-pin').data('board');
   let domString = `
     <div class="moveIt">
     <div class="closeSelect">
@@ -21,7 +17,7 @@ const movePinModal = (e) => {
   boardData.getBoards()
     .then((boards) => {
       boards.forEach((board) => {
-        if (currentUser === board.uid || currentUser === admin) {
+        if (board.id !== boardId) {
           domString += `<option value="${board.title}" data-board="${board.id}">${board.title}</option>`;
         }
       });
