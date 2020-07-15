@@ -7,6 +7,7 @@ The objective of the exercise was to create a site similar to Pinterest. This pr
 1. User Auth with Google. 
 1. Displays Boards and Pins when User is logged in.
 1. User can add their own boards and pins.
+1. User can upload image for new pin.
 1. User can delete their boards and pins.
 1. User can move their pins between their boards. 
 1. Project uses HTML, CSS, JS, JQuery, Firebase, Axios
@@ -18,7 +19,7 @@ The objective of the exercise was to create a site similar to Pinterest. This pr
 ##### Pin View / Inside Board
 ![Pin View](screenshots/screenshot3.jpg)
 ##### CRUD Features
-![Features](screenshots/features6.gif)
+![Features](screenshots/readme.gif)
 
 
 
