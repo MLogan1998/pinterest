@@ -3,36 +3,59 @@ import 'firebase/auth';
 import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 import './displayPins.scss';
+import boardData from '../../helpers/data/boardData';
 
 const noPinData = (board) => {
-  const domString = `
-    <div class ="home">
-    <i class="fas fa-home fa-2x"></i>
-    <h5 class="mt-2">Nothing to see here. Add a pin.</h5>
-    <div id="pinButton">
-    <button class="btn btn-danger mt-2 new-pin" data-board="${board}"><i class="fas fa-plus mr-1"></i>Create New Pin</button>
-    </div>
-    <div id="pinForm"></div>
-    </div>
-  `;
-  utils.printToDom('#pins', domString);
+  const boardId = board;
+  let domString = '';
+  boardData.getBoards()
+    .then((boards) => {
+      boards.forEach((oneboard) => {
+        if (oneboard.id === boardId) {
+          domString += `
+          <div class ="home">
+          <i class="fas fa-home fa-2x"></i>
+          <h2 class="welcome mt-1 mb-3">${oneboard.title}</h2>
+          <h5 class="mt-2">Nothing to see here. Add a pin.</h5>
+          <div id="pinButton">
+          <button class="btn btn-danger mt-2 new-pin" data-board="${board}"><i class="fas fa-plus mr-1"></i>Create New Pin</button>
+          </div>
+          <div id="pinForm"></div>
+          </div>
+        `;
+        }
+      });
+      utils.printToDom('#pins', domString);
+    })
+    .catch((err) => err);
 };
 
 const displayPins = (selectedBoard) => {
   const admin = 'ghzu6oLncNReiCyFVjZVfBjIdbs1';
   const currentUser = firebase.auth().currentUser.uid;
   let domString = '';
-  pinData.pinByBoardId(selectedBoard)
-    .then((pins) => {
-      if (Array.isArray(pins) && pins.length > 0) {
-        domString += `
+  boardData.getBoards()
+    .then((boards) => {
+      boards.forEach((oneboard) => {
+        if (oneboard.id === selectedBoard) {
+          console.error(`selectedBoard: ${selectedBoard} $ oneboard.id: ${oneboard.id}`);
+          domString += `
         <div class ="home">
         <i class="fas fa-home fa-2x"></i>
+        <h2 class="welcome mt-1 mb-3">${oneboard.title}</h2>
         <div id="pinButton">
         <button class="btn btn-danger mt-2 new-pin" data-board="${selectedBoard}"><i class="fas fa-plus mr-1"></i>Create New Pin</button>
         </div>
         <div id="pinForm"></div>
         </div>
+      `;
+        }
+      });
+    });
+  pinData.pinByBoardId(selectedBoard)
+    .then((pins) => {
+      if (Array.isArray(pins) && pins.length > 0) {
+        domString += `
         <div class="pinContainer">`;
         pins.forEach((pin) => {
           domString += `

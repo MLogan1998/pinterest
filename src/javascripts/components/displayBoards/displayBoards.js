@@ -34,7 +34,7 @@ const displayBoards = () => {
           <h5 class="card-header boardName">${board.title}</h5>
           <div class="card-body">
           <div class="boardButton">
-          <button type="button" id="${board.id}" class="btn btn-danger boardbtn mr-3">Show Pins</button>`;
+          <button type="button" id="${board.id}" class="btn btn-danger boardbtn mr-3" data-boardName="${board.title}">Show Pins</button>`;
           if (currentUser === board.uid || currentUser === admin) {
             domString += '<i class="fas fa-trash"></i>';
           }
